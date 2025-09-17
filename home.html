@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QR Asset Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>QR Asset Tracker</h1>
+    <p>Scan QR → Track Assets → Export/Import</p>
+  </header>
+
+  <main>
+    <!-- QR Scanner -->
+    <section class="card">
+      <h2>QR Scanner</h2>
+      <div class="scanner">
+        <video id="video" playsinline></video>
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="controls">
+        <button id="startScan">Start</button>
+        <button id="stopScan">Stop</button>
+        <button id="useLocation">Capture Location</button>
+      </div>
+      <p>Last Scanned: <span id="lastScanned">—</span></p>
+      <p id="locationText"></p>
+    </section>
+
+    <!-- Asset List -->
+    <section class="card">
+      <h2>Assets</h2>
+      <div class="controls">
+        <input id="search" placeholder="Search asset">
+        <select id="sort">
+          <option value="new">Newest</option>
+          <option value="old">Oldest</option>
+        </select>
+        <button id="exportJson">Export JSON</button>
+        <button id="exportCsv">Export CSV</button>
+        <input type="file" id="importJson" accept=".json">
+      </div>
+      <table id="assetTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+  <script src="script.js"></script>
+</body>
+</html>
